@@ -1,0 +1,15 @@
+{
+  "dalilah": {
+    "hero": {
+      "heading": "Download premium city guides",
+      "subheading": "Curated itineraries, restaurants and local gems, pay once, use offline"
+    },
+    "destinations": {
+      "title": "Top destinations"
+    },
+    "featured": {
+      "title": "Featured guides",
+      "view_all": "View all"
+    }
+  }
+}

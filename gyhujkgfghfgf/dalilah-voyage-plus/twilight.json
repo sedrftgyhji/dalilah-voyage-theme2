@@ -1,0 +1,167 @@
+{
+  "version": "1.1.0",
+  "theme_name": "DALiLAH Voyage Plus",
+  "repo_url": "https://example.com/dalilah-voyage-plus",
+  "support_url": "https://example.com/support",
+  "settings": [
+    {
+      "type": "boolean",
+      "label": "Dark top navigation",
+      "id": "topnav_is_dark",
+      "format": "switch",
+      "selected": false
+    },
+    {
+      "type": "color",
+      "label": "Primary color",
+      "id": "primary_color",
+      "format": "color",
+      "value": "#0ea5e9"
+    },
+    {
+      "type": "color",
+      "label": "Accent color",
+      "id": "accent_color",
+      "format": "color",
+      "value": "#22c55e"
+    },
+    {
+      "type": "string",
+      "id": "placeholder",
+      "format": "hidden",
+      "value": "images/img_placeholder.png"
+    },
+    {
+      "type": "string",
+      "label": "Hero background video URL",
+      "id": "hero_video_url",
+      "format": "text",
+      "value": ""
+    },
+    {
+      "type": "number",
+      "label": "Card radius",
+      "id": "card_radius",
+      "format": "range",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "selected": 14
+    }
+  ],
+  "features": [
+    "component-featured-products",
+    "component-fixed-banner",
+    "component-fixed-products",
+    "component-photos-slider",
+    "component-products-slider",
+    "component-parallax-background",
+    "component-store-features",
+    "component-youtube",
+    "filters"
+  ],
+  "components": [
+    {
+      "name": "voyage-hero",
+      "title": "Voyage Hero",
+      "icon": "sicon-hero",
+      "path": "home.voyage-hero",
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "label": "Heading"
+        },
+        {
+          "id": "subheading",
+          "type": "string",
+          "label": "Subheading",
+          "format": "textarea"
+        },
+        {
+          "id": "banner",
+          "type": "string",
+          "label": "Banner image",
+          "format": "image"
+        },
+        {
+          "id": "show_search",
+          "type": "boolean",
+          "label": "Show inline search",
+          "format": "switch",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "name": "destination-grid",
+      "title": "Destination Grid",
+      "icon": "sicon-grid",
+      "path": "home.destination-grid",
+      "fields": [
+        {
+          "id": "destinations",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 4,
+          "maxLength": 12,
+          "fields": [
+            {
+              "id": "title",
+              "type": "string",
+              "label": "City name"
+            },
+            {
+              "id": "image",
+              "type": "string",
+              "label": "Image",
+              "format": "image"
+            },
+            {
+              "id": "link",
+              "type": "string",
+              "label": "Link, collection or search keyword"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "featured-guides",
+      "title": "Featured Guides",
+      "icon": "sicon-star",
+      "path": "home.featured-guides",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "label": "Section title"
+        },
+        {
+          "id": "limit",
+          "type": "number",
+          "label": "Products limit",
+          "min": 4,
+          "max": 16,
+          "selected": 8
+        },
+        {
+          "id": "categories",
+          "type": "collection",
+          "format": "collection",
+          "label": "Categories, optional",
+          "minLength": 0,
+          "maxLength": 10,
+          "fields": [
+            {
+              "id": "category_id",
+              "type": "string",
+              "label": "Category ID"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

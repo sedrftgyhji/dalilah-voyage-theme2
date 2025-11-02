@@ -1,0 +1,9 @@
+<section class="card" style="margin-block:16px;padding:16px">
+  {% set title = component.get('title')|default(trans('dalilah.featured.title')) %}
+  {% set limit = component.get('limit')|default(8) %}
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
+    <h2 style="margin:0">{{ title }}</h2>
+    <a class="btn btn-outline" href="/search?q=guide">{{ trans("dalilah.featured.view_all") }}</a>
+  </div>
+  <salla-products-list source="categories" filters-results includes='["images"]' limit="{{ limit }}"></salla-products-list>
+</section>

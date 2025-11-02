@@ -1,0 +1,21 @@
+{% extends "layouts.master" %}
+{% block title %}{{ trans("salla.products") }} | {{ store.name }}{% endblock %}
+{% block content %}
+  <salla-breadcrumb></salla-breadcrumb>
+  <div class="card" style="padding:16px;margin-block:16px">
+    <salla-filters></salla-filters>
+  </div>
+  <salla-products-list id="pl"
+      source="categories"
+      filters-results
+      autoload
+      includes='["options","images"]'>
+  </salla-products-list>
+{% endblock %}
+{% block scripts %}
+<script>
+  const list = document.getElementById('pl');
+  document.addEventListener('salla-filters::changed', e => { list.setFilters(e.detail); });
+  document.addEventListener('salla-filters::re-render', e => { list.setFilters(e.detail); });
+</script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layouts.master" %}
+{% block title %}{{ product.name }} | {{ store.name }}{% endblock %}
+{% block content %}
+  <salla-breadcrumb></salla-breadcrumb>
+  <article class="grid" style="display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-block:16px">
+    <section class="card" style="padding:16px">
+      <salla-product-card product-id="{{ product.id }}"></salla-product-card>
+      {% hook 'product:single.description.start' %}
+      <div style="margin-top:16px">
+        <salla-reviews-summary product-id="{{ product.id }}"></salla-reviews-summary>
+        <salla-reviews product-id="{{ product.id }}"></salla-reviews>
+      </div>
+      {% hook 'product:single.description' %}
+    </section>
+    <aside class="card" style="padding:16px;position:sticky;top:16px;height:max-content">
+      <salla-product-options product-id="{{ product.id }}"></salla-product-options>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+        <salla-add-product-button product-id="{{ product.id }}" product-type="digital" quick-buy support-sticky-bar></salla-add-product-button>
+        <salla-quick-buy product-id="{{ product.id }}" type="buy"></salla-quick-buy>
+      </div>
+      <div style="margin-top:12px">
+        <salla-social-share></salla-social-share>
+      </div>
+    </aside>
+  </article>
+
+  <section class="card" style="padding:16px;margin-block:16px">
+    <h3 style="margin:0 0 8px 0">{{ trans("salla.related_products") }}</h3>
+    <salla-products-list source="related" source-value="{{ product.id }}" includes='["images"]'></salla-products-list>
+  </section>
+{% endblock %}
+{% block styles %}
+<style>
+  salla-mini-checkout-widget{
+    --salla-fast-checkout-button-height: 2.75rem;
+    --salla-fast-checkout-button-width: 100%;
+    --salla-fast-checkout-button-border-radius: .5rem;
+  }
+</style>
+{% endblock %}

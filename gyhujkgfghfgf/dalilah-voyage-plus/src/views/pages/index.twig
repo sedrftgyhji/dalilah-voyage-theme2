@@ -1,0 +1,10 @@
+{% extends "layouts.master" %}
+{% block content %}
+  {% component home %}
+  {% include "components/home/voyage-hero.twig" %}
+  {% include "components/home/destination-grid.twig" %}
+  {% include "components/home/featured-guides.twig" %}
+{% endblock %}
+{% block scripts %}
+  <script defer src="{{ home.js|asset('dist/home.js') }}"></script>
+{% endblock %}
