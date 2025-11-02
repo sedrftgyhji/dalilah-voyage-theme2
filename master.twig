@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{ app.locale }}" dir="{{ app.dir }}">
+<head>
+  {% hook 'head:start' %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ store.name }}{% endblock %}</title>
+
+  <style>
+    :root{
+      --color-primary: {{ theme.settings.get('primary_color')|default('#0ea5e9') }};
+      --color-accent: {{ theme.settings.get('accent_color')|default('#22c55e') }};
+      --radius-card: {{ theme.settings.get('card_radius')|default(14) }}px;
+      --font-main: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    }
+    body{font-family: var(--font-main);}
+    .container{max-width:1200px;margin-inline:auto;padding-inline:16px;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1rem;border-radius:9999px;background:var(--color-primary);color:#fff;font-weight:600}
+    .btn-outline{background:transparent;border:1px solid var(--color-primary);color:var(--color-primary)}
+    .card{border-radius:var(--radius-card);box-shadow:0 10px 20px rgba(0,0,0,.05);overflow:hidden;background:#fff}
+  </style>
+
+  {% block styles %}{% endblock %}
+  {% hook head %}
+  {% block head %}{% endblock %}
+  {% hook 'head:end' %}
+</head>
+<body class="{% hook 'body:classes' %}">
+  {% hook 'body:start' %}
+
+  <header class="container" style="display:flex;align-items:center;gap:16px;justify-content:space-between;padding-block:16px">
+    <a href="/" class="logo" style="font-weight:800;font-size:1.25rem">{{ store.name }}</a>
+    <div style="display:flex;align-items:center;gap:12px;flex:1;justify-content:center">
+      <salla-search inline oval height="48"></salla-search>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <salla-localization-modal></salla-localization-modal>
+      <salla-cart-summary></salla-cart-summary>
+      <salla-user-menu></salla-user-menu>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="container" style="padding-block:40px;color:#6b7280">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center">
+      <div>© {{ "now"|date("Y") }} {{ store.name }}</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <salla-social></salla-social>
+      </div>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+  {% hook 'body:end' %}
+</body>
+</html>
